@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 
@@ -21,6 +22,7 @@ class Cook(AbstractUser):
     class Meta:
         verbose_name = "cook"
         verbose_name_plural = "cooks"
+        ordering = ["username"]
 
     def __str__(self):
         return f"{self.username} ({self.first_name} {self.last_name})"
@@ -33,7 +35,7 @@ class Dish(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True)
     dish_type = models.ForeignKey(DishType, on_delete=models.CASCADE)
-    cooks = models.ManyToManyField(Cook, related_name="dishes")
+    cooks = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="dishes")
 
     def __str__(self):
         return f"{self.name} ({self.dish_type})"
