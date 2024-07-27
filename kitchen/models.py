@@ -3,7 +3,7 @@ from django.db import models
 
 
 from django.contrib.auth.models import AbstractUser
-from django.urls import reverse
+# from django.urls import reverse
 
 
 class DishType(models.Model):
@@ -11,6 +11,8 @@ class DishType(models.Model):
 
     class Meta:
         ordering = ["name"]
+        verbose_name = "dish_type"
+        verbose_name_plural = "dish_types"
 
     def __str__(self):
         return self.name
