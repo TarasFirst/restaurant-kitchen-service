@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Restaurant Kitchen Service (RKS) Home</h1>
+  <p><strong>We offer the Best Restaurant Kitchen Service!</strong></p>
+  <h2>About us</h2>
+  <p><strong> Our {{ num_cooks }} cooks can cook any of the {{ num_dishes }} dishes from {{ num_dish_types }} different types of dishes.</strong></p>
+<br>
+  
+  <p>You have visited this page
+    {{ num_visits }} time{{ num_visits|pluralize }}.
+  </p>
+
+{% endblock %}
