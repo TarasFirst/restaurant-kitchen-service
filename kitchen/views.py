@@ -2,8 +2,8 @@ from django.contrib.auth.decorators import login_required
 # from django.http import HttpResponseRedirect
 from django.shortcuts import render
 # from django.urls import reverse_lazy
-# from django.views import generic
-# from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from kitchen.models import Cook, Dish, DishType
 # from taxi.forms import (
@@ -18,7 +18,6 @@ from kitchen.models import Cook, Dish, DishType
 
 @login_required
 def index(request):
-    """View function for the home page of the site."""
 
     num_cooks = Cook.objects.count()
     num_dishes = Dish.objects.count()
@@ -35,3 +34,10 @@ def index(request):
     }
 
     return render(request, "kitchen/index.html", context=context)
+
+
+class DishTypeListView(LoginRequiredMixin, generic.ListView):
+    model = DishType
+    context_object_name = "dish_type_list"
+    template_name = "kitchen/dish_type_list.html"
+    paginate_by = 5
