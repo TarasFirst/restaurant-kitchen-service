@@ -12,7 +12,7 @@ from kitchen.views import (
     # DriverCreateView,
     # DriverLicenseUpdateView,
     # DriverDeleteView,
-    # ManufacturerListView,
+    DishTypeListView,
     # ManufacturerCreateView,
     # ManufacturerUpdateView,
     # ManufacturerDeleteView,
@@ -21,6 +21,11 @@ from kitchen.views import (
 
 urlpatterns = [
     path("", index, name="index"),
+    path(
+        "dish_types/",
+        DishTypeListView.as_view(),
+        name="dish-type-list",
+    ),
 ]
 
 app_name = "kitchen"
