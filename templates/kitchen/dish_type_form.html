@@ -1,12 +1,41 @@
 {% extends "base.html" %}
-{% load crispy_forms_filters %}
+
+{% load static %}
+
+{% block title %} {% endblock title %}
 
 {% block content %}
-  <h1>{{ object|yesno:"Update,Create" }} dish type</h1>
-  <form action="" method="post" novalidate>
-    {% csrf_token %}
-    {{ form|crispy }}
-
-    <input type="submit" value="Submit" class="btn btn-primary">
-  </form>
-{% endblock %}
+<section>
+  <div class="page-header min-vh-100">
+    <div class="container">
+      <div class="row">
+        <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
+          <div class="position-relative h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center"
+               style="background-image: url('{% static 'img/illustrations/pexels-chanwalrus-958545.jpg' %}'); background-size: cover;"
+               loading="lazy"></div>
+        </div>
+        <div class="col-xl-5 col-lg-6 col-md-7 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
+          <div class="card d-flex blur justify-content-center shadow-lg my-sm-0 my-sm-6 mt-8 mb-5">
+            <div class="card-header p-5 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+              <div class="bg-gradient-primary shadow-primary border-radius-lg p-3">
+                <h3 class="text-white text-center mb-0">{{ object|yesno:"Update,Create" }} dish type</h3>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="card-category">
+                <form role="form" method="post" action="#" class="text-start" novalidate>
+                  {% csrf_token %}
+                  {{ form }}
+                  <div class="text-center">
+                    <button type="submit" class="btn btn btn-behance w-100 my-4 mb-2">Submit</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

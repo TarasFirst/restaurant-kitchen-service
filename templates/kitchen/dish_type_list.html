@@ -1,50 +1,81 @@
 {% extends "base.html" %}
-{% load crispy_forms_filters %}
+
+{% load static %}
+
+{% block title %}  {% endblock title %}
+
 
 {% block content %}
-  <h1>
-    Types of dish
-    <a href="{% url 'kitchen:dish-type-create' %}" class="btn btn-primary link-to-page">
-      Create
-    </a>
-  </h1>
-  <form method="get" action="" class="form-inline">
-    {{ search_form|crispy }}
-    <input class="btn btn-secondary" type="submit" value="🔍">
-  </form>
-  {% if dish_type_list %}
-    <table class="table">
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Update</th>
-        <th>Delete</th>
-      </tr>
+  <!-- -------- START HEADER 8 w/ card over right bg image ------- -->
+  <section>
+  <div class="page-header min-vh-100">
+  <div class="container">
+  <div class="row">
+  <div
+      class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
+    <div class="position-relative h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center"
+         style="background-image: url('{% static 'img/illustrations/pexels-chanwalrus-958545.jpg' %}'); background-size: cover;"
+         loading="lazy"></div>
+  </div>
 
-      {% for dish_type in dish_type_list %}
+  <div class="col-xl-5 col-lg-6 col-md-7 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
+  <div class="card d-flex blur justify-content-center shadow-lg my-sm-0 my-sm-6 mt-8 mb-5">
+  <div class="card-header p-5 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+    <div class="bg-gradient-primary shadow-primary border-radius-lg p-3">
+      <h3 class="text-white text-center mb-0 ">Types of dish</h3>
+    </div>
+  </div>
+  <div class="card-body">
+  <p class="pb-3">
+    {% if dish_type_list %}
+      <table class="table">
         <tr>
-          <td>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+
+        {% for dish_type in dish_type_list %}
+          <tr>
+            <td>
               {{ dish_type.id }}
-          </td>
-          <td>
+            </td>
+            <td>
               {{ dish_type.name }}
-          </td>
-          <td>
+            </td>
+            <td>
               <a href="{% url 'kitchen:dish-type-update' pk=dish_type.id %}">
                 Update
               </a>
             </td>
             <td>
               <a style="color: red"
-                href="{% url 'kitchen:dish-type-delete' pk=dish_type.id %}">
+                 href="{% url 'kitchen:dish-type-delete' pk=dish_type.id %}">
                 Delete
               </a>
             </td>
-        </tr>
-      {% endfor %}
-    </table>
+          </tr>
+        {% endfor %}
+      </table>
 
-  {% else %}
+    {% else %}
       <p>There are no dish types in the service.</p>
-  {% endif %}
+    {% endif %}
+
+  {% block pagination %}
+    {% include "includes/pagination.html" %}
+  {% endblock %}
+
+  <form method="get" action="" class="form-inline">
+    {{ search_form }}
+    <input class="btn btn-secondary" type="submit" value="🔍">
+  </form>
+
+
+
+  <a href="{% url 'kitchen:dish-type-create' %}" class="btn btn-behance link-to-page">
+    Create
+  </a>
+
 {% endblock %}
