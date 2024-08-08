@@ -45,7 +45,9 @@ class CookCreationForm(UserCreationForm):
         )
 
     def clean_years_of_experience(self):
-        return validate_years_of_experience(self.cleaned_data["years_of_experience"])
+        return validate_years_of_experience(
+            self.cleaned_data["years_of_experience"]
+        )
 
 
 class CookUpdateForm(forms.ModelForm):
@@ -54,14 +56,18 @@ class CookUpdateForm(forms.ModelForm):
         fields = ["years_of_experience"]
 
     def clean_years_of_experience(self):
-        return validate_years_of_experience(self.cleaned_data["years_of_experience"])
+        return validate_years_of_experience(
+            self.cleaned_data["years_of_experience"]
+        )
 
 
 def validate_years_of_experience(
     years_of_experience,
 ):
     if years_of_experience < 0:
-        raise ValidationError("Years_of_experience number should be a positive number.")
+        raise ValidationError(
+            "Years_of_experience number should be a positive number."
+        )
 
     return years_of_experience
 

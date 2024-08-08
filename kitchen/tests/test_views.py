@@ -68,8 +68,7 @@ class PrivateCookTests(TestCase):
     [
         pytest.param(
             "testcook",
-            ["testcook1",
-             "testcook2"],
+            ["testcook1", "testcook2"],
             id="partial_match"
         ),
         pytest.param(
@@ -89,8 +88,7 @@ def test_cook_search(client, search_term, expected_results):
     Cook.objects.create(
         username="cook1",
         password="testpass",
-        years_of_experience=5
-    )
+        years_of_experience=5)
     Cook.objects.create(
         username="cook2",
         password="testpass",
@@ -119,11 +117,16 @@ def test_cook_search(client, search_term, expected_results):
 @pytest.mark.parametrize(
     "search_term,expected_results",
     [
-        pytest.param("Dish_X", ["Dish_X1", "Dish_X2"], id="partial_match"),
+        pytest.param(
+            "Dish_X",
+            ["Dish_X1", "Dish_X2"],
+            id="partial_match"
+        ),
         pytest.param(
             "",
             ["Dish_X1", "Dish_X2", "Dish_Y1"],
-            id="empty_search"),
+            id="empty_search"
+        ),
         pytest.param("nonexistent", [], id="no_results"),
     ],
 )
@@ -139,7 +142,10 @@ def test_dish_search(client, search_term, expected_results):
     Dish.objects.create(model="Dish_X2", dish_type=dish_type)
     Dish.objects.create(model="DishY1", dish_type=dish_type)
 
-    response = client.get(reverse("kitchen:dish-list"), {"name": search_term})
+    response = client.get(
+        reverse("kitchen:dish-list"),
+        {"name": search_term}
+    )
     assert response.status_code == 200
 
     response_content = response.content.decode()
@@ -185,9 +191,7 @@ def test_dish_type_search(client, search_term, expected_results):
     response_content = response.content.decode()
     for dish_type_name in expected_results:
         assert dish_type_name in response_content
-    for dish_type in DishType.objects.exclude(
-            name__in=expected_results
-    ):
+    for dish_type in DishType.objects.exclude(name__in=expected_results):
         assert dish_type.name not in response_content
 
 

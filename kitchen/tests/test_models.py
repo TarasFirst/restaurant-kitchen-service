@@ -1,5 +1,4 @@
 from django.contrib.auth import get_user_model
-from django.core.exceptions import ValidationError
 from django.test import TestCase
 
 from kitchen.models import DishType, Dish
@@ -7,12 +6,8 @@ from kitchen.models import DishType, Dish
 
 class ModelsTestCase(TestCase):
     def test_dish_type_str(self):
-        dish_type = DishType.objects.create(
-            name="test_name"
-        )
-        self.assertEqual(
-            str(dish_type), f"{dish_type.name}"
-        )
+        dish_type = DishType.objects.create(name="test_name")
+        self.assertEqual(str(dish_type), f"{dish_type.name}")
 
     def test_cook_str(self):
         cook = get_user_model().objects.create(
@@ -21,8 +16,7 @@ class ModelsTestCase(TestCase):
             last_name="test_last_name",
         )
         self.assertEqual(
-            str(cook),
-            f"{cook.username} ({cook.first_name} {cook.last_name})"
+            str(cook), f"{cook.username} ({cook.first_name} {cook.last_name})"
         )
 
     def test_cook_years_of_experience(self):
@@ -39,9 +33,7 @@ class ModelsTestCase(TestCase):
         self.assertEqual(cook.username, username)
 
     def dish(self):
-        dish_type = DishType.objects.create(
-            name="test_name"
-        )
+        dish_type = DishType.objects.create(name="test_name")
         dish = Dish.objects.create(
             name="test_name",
             dish_type=dish_type,

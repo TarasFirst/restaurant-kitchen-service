@@ -9,7 +9,9 @@ from kitchen.forms import (
     DishTypeSearchForm,
     DishSearchForm,
     DishForm,
-    CookSearchForm, CookCreationForm, CookUpdateForm,
+    CookSearchForm,
+    CookCreationForm,
+    CookUpdateForm,
 )
 from kitchen.models import Cook, Dish, DishType
 
@@ -115,9 +117,7 @@ class DishDeleteView(LoginRequiredMixin, generic.DeleteView):
 @login_required
 def toggle_assign_to_dish(request, pk):
     cook = Cook.objects.get(id=request.user.id)
-    if (
-        Dish.objects.get(id=pk) in cook.dishes.all()
-    ):
+    if Dish.objects.get(id=pk) in cook.dishes.all():
         cook.dishes.remove(pk)
     else:
         cook.dishes.add(pk)
@@ -131,9 +131,7 @@ class CookListView(LoginRequiredMixin, generic.ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(CookListView, self).get_context_data(**kwargs)
         username = self.request.GET.get("username", "")
-        context["search_form"] = CookSearchForm(
-            initial={"username": username}
-        )
+        context["search_form"] = CookSearchForm(initial={"username": username})
         return context
 
     def get_queryset(self):

@@ -41,21 +41,9 @@ urlpatterns = [
         DishTypeDeleteView.as_view(),
         name="dish-type-delete",
     ),
-    path(
-        "dishes/",
-        DishListView.as_view(),
-        name="dish-list"
-    ),
-    path(
-        "dishes/<int:pk>/",
-        DishDetailView.as_view(),
-        name="dish-detail"
-    ),
-    path(
-        "dishes/create/",
-        DishCreateView.as_view(),
-        name="dish-create"
-    ),
+    path("dishes/", DishListView.as_view(), name="dish-list"),
+    path("dishes/<int:pk>/", DishDetailView.as_view(), name="dish-detail"),
+    path("dishes/create/", DishCreateView.as_view(), name="dish-create"),
     path(
         "dishes/<int:pk>/update/",
         DishUpdateView.as_view(),
@@ -71,20 +59,9 @@ urlpatterns = [
         toggle_assign_to_dish,
         name="toggle-dish-assign",
     ),
-    path(
-        "cooks/",
-        CookListView.as_view(),
-        name="cook-list"),
-    path(
-        "cooks/<int:pk>/",
-        CookDetailView.as_view(),
-        name="cook-detail"
-    ),
-    path(
-        "cooks/create/",
-        CookCreateView.as_view(),
-        name="cook-create"
-    ),
+    path("cooks/", CookListView.as_view(), name="cook-list"),
+    path("cooks/<int:pk>/", CookDetailView.as_view(), name="cook-detail"),
+    path("cooks/create/", CookCreateView.as_view(), name="cook-create"),
     path(
         "cooks/<int:pk>/update/",
         CookUpdateView.as_view(),
