@@ -31,6 +31,8 @@
                 </a>
               </div>
               <p>Dish type: <strong>{{ dish.dish_type.name }}</strong></p>
+              <p>Description: <strong>{{ dish.description }}</strong></p>
+              <p>Price: <strong>{{ dish.price }}</strong></p>
               <h4 class="mt-4">Cooks</h4>
               <div class="text-center my-3">
                 {% if dish in user.dishes.all %}
