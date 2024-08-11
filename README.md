@@ -16,9 +16,20 @@ python3 -m venv venv
 venv\Scripts\activate (on Windows)
 source venv/bin/activate (on macOS)
 pip install -r requirements.txt
-python manage.py runserver
 ```
 
+## Set Up Database
+
+```shell
+python manage.py makemigrations
+python manage.py migrate
+```
+
+## At this point, the app runs at `http://127.0.0.1:8000/`. 
+
+```shell
+python manage.py runserver
+```
 
 ## Features
 * Access only to authorized users
