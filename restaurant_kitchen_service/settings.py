@@ -37,7 +37,7 @@ else:
     SECRET_KEY = "dummy-secret-key-for-demo"
     DEBUG = os.environ.get("DJANGO_DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = ["127.0.0.1"]
+ALLOWED_HOSTS = ["127.0.0.1", "restaurant-kitchen-service-t3fr.onrender.com"]
 
 INTERNAL_IPS = [
     "127.0.0.1",
