@@ -1,8 +1,10 @@
 from django.conf import settings
+from django.core.exceptions import PermissionDenied
 from django.db import models
 
-
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, User
+from django.db.models.signals import pre_delete
+from django.dispatch import receiver
 from django.urls import reverse
 
 
@@ -29,6 +31,11 @@ class Cook(AbstractUser):
 
     def get_absolute_url(self):
         return reverse("kitchen:cook-detail", kwargs={"pk": self.pk})
+
+    def delete(self, *args, **kwargs):
+        if self.is_superuser:
+            raise PermissionDenied("You cannot delete a superuser.")
+        super(Cook, self).delete(*args, **kwargs)
 
 
 class Dish(models.Model):
