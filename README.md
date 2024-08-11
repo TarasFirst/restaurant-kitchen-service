@@ -40,6 +40,13 @@ python manage.py runserver
 
 ## Demo
 
+Access to service:
+
+user: test_user
+
+password: Y.+K[FdVJ%1%1Je
+
+
 Structure database
 ![img.png](images_readme/structure_database.png)
 
