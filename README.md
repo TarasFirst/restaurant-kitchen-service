@@ -1,12 +1,24 @@
 # Restaurant kitchen service
 
-This is a site that implements a kitchen management service for restaurants.
+### This is a site that implements a kitchen management service for restaurants.
 
+<br>
 
+## Access to service
+
+## `Product page`
+- click 👉 [Restaurant kitchen service](https://restaurant-kitchen-service-t3fr.onrender.com)
+
+- copy 👉 https://restaurant-kitchen-service-t3fr.onrender.com
+
+### Test user
+### `username:` `test_user`
+
+### `password:` `Y.+K[FdVJ%1%1Je`
 
 ## Installing / Getting started
 
-Python3 must be already installed
+### Python3 must be already installed
 
 
 ```shell
@@ -25,7 +37,7 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-## At this point, the app runs at `http://127.0.0.1:8000/`. 
+## At this point the app runs at `http://127.0.0.1:8000/`. 
 
 ```shell
 python manage.py runserver
@@ -40,21 +52,12 @@ python manage.py runserver
 
 ## Demo
 
-Access to service:
-
-user: test_user
-
-password: Y.+K[FdVJ%1%1Je
-
-
-Structure database
+### Structure database
 ![img.png](images_readme/structure_database.png)
 
-Some pages
-![img_1.png](images_readme/home_page.png)
+### Some pages
 
-![img.png](images_readme/list_cook.png)
-
-![img.png](images_readme/cook_profile.png)
-
+![img.png](images_readme/home.png)
+![img.png](images_readme/cook_list.png)
+![img.png](images_readme/cook_detail.png)
 ![img.png](images_readme/dish_detail.png)
