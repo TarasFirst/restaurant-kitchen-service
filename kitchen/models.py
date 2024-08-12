@@ -3,8 +3,6 @@ from django.core.exceptions import PermissionDenied
 from django.db import models
 
 from django.contrib.auth.models import AbstractUser, User
-from django.db.models.signals import pre_delete
-from django.dispatch import receiver
 from django.urls import reverse
 
 
