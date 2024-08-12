@@ -2,23 +2,19 @@
 
 {% load static %}
 
-{% block title %}  {% endblock title %}
-
-
 {% block content %}
-  <!-- -------- START HEADER 8 w/ card over right bg image ------- -->
+  
   <section>
   <div class="page-header min-vh-100">
   <div class="container">
   <div class="row">
   <div
-      class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
+      class="col-5 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
     <div class="position-relative h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center"
          style="background-image: url('{% static 'img/illustrations/pexels-chanwalrus-958545.jpg' %}'); background-size: cover;"
          loading="lazy"></div>
   </div>
-
-  <div class="col-xl-5 col-lg-6 col-md-7 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
+  <div class="col-6 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
   <div class="card d-flex blur justify-content-center shadow-lg my-sm-0 my-sm-6 mt-8 mb-5">
   <div class="card-header p-5 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
     <div class="bg-gradient-primary shadow-primary border-radius-lg p-3">
@@ -28,14 +24,46 @@
   <div class="card-body">
   <p class="pb-3">
     {% if dish_type_list %}
-      <table class="table">
+      <style>
+          .table-fixed {
+              width: 100%;
+              table-layout: fixed;
+          }
+
+          .table-fixed th, .table-fixed td {
+              word-wrap: break-word;
+              white-space: normal;
+              overflow: hidden;
+          }
+
+          .table-fixed th:nth-child(1),
+          .table-fixed td:nth-child(1) {
+              width: 10%;
+          }
+
+          .table-fixed th:nth-child(2),
+          .table-fixed td:nth-child(2) {
+              width: 50%;
+          }
+
+          .table-fixed th:nth-child(3),
+          .table-fixed td:nth-child(3) {
+              width: 20%;
+          }
+
+          .table-fixed th:nth-child(4),
+          .table-fixed td:nth-child(4) {
+              width: 20%;
+          }
+
+      </style>
+      <table class="table table-fixed">
         <tr>
           <th>ID</th>
           <th>Name</th>
           <th>Update</th>
           <th>Delete</th>
         </tr>
-
         {% for dish_type in dish_type_list %}
           <tr>
             <td>
@@ -71,9 +99,7 @@
     {{ search_form }}
     <input class="btn btn-secondary" type="submit" value="🔍">
   </form>
-
-
-
+  
   <a href="{% url 'kitchen:dish-type-create' %}" class="btn btn-behance link-to-page">
     Create
   </a>

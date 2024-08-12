@@ -2,37 +2,38 @@
 
 {% load static %}
 
-{% block title %} {% endblock title %}
-
 {% block content %}
-<section>
-  <div class="page-header min-vh-100">
-    <div class="container">
-      <div class="row">
-        <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
-          <div class="position-relative h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center"
-               style="background-image: url('{% static 'img/illustrations/pexels-michelle-riach-276396-995743.jpg' %}'); background-size: cover;"
-               loading="lazy"></div>
-        </div>
-        <div class="col-xl-5 col-lg-6 col-md-7 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
-          <div class="card d-flex blur justify-content-center shadow-lg my-sm-0 my-sm-6 mt-8 mb-5">
-            <div class="card-header p-5 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-              <div class="bg-gradient-danger shadow-primary border-radius-lg p-3">
-                <h3 class="text-white text-center mb-0">Delete dish?</h3>
+  <section>
+    <div class="page-header min-vh-100">
+      <div class="container">
+        <div class="row">
+          <div
+              class="col-5 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
+            <div class="position-relative h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center"
+                 style="background-image: url('{% static 'img/illustrations/pexels-michelle-riach-276396-995743.jpg' %}'); background-size: cover;"
+                 loading="lazy"></div>
+          </div>
+          <div class="col-6 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
+            <div class="card d-flex blur justify-content-center shadow-lg my-sm-0 my-sm-6 mt-8 mb-5">
+              <div class="card-header p-5 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+                <div class="bg-gradient-danger shadow-primary border-radius-lg p-3">
+                  <h3 class="text-white text-center mb-0">Delete dish?</h3>
+                </div>
               </div>
-            </div>
-            <div class="card-body text-center">
-              <form action="" method="post">
-                {% csrf_token %}
-                <input class="btn bg-gradient-warning my-3" type="submit" value="Yes">
-                <br>
-                <a href="{% url 'kitchen:dish-list' %}" class="btn btn-secondary my-3">CANCEL</a>
-              </form>
+              <div class="card-body text-center">
+
+                <form action="" method="post">
+                  {% csrf_token %}
+                  <input class="btn bg-gradient-warning my-3" type="submit" value="Yes">
+                  <br>
+                  <a href="{% url 'kitchen:dish-list' %}" class="btn btn-secondary my-3">CANCEL</a>
+                </form>
+
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 {% endblock content %}
